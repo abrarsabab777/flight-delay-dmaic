@@ -1,6 +1,0 @@
-# Progress Log
-
-## Jun 18
-- GitHub repo created (flight-delay-dmaic)
-- Folder structure created
-- Day 1 complete
