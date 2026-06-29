@@ -26,3 +26,11 @@
 * Exported as PDF
 * Day 3 complete
 
+## 
+
+## Jun 29
+
+* Built SIPOC diagram in PowerPoint (UTA template)
+* Researched DOT Air Travel Consumer Report, wrote VOC summary
+* Day 4 complete — Define phase finished (Charter + SIPOC + VOC)
+
