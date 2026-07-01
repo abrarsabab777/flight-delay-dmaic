@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="flight_delays.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2165"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="flights" custom_title="0" dock_id="1" table="4,7:mainflights"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="OnTimeFlights%*">SELECT 
+    COUNT(*) AS total_flights,
+    SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) AS on_time_flights,
+    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
+FROM flights
+WHERE CANCELLED = 0;</sql><sql name="MaxDelayReason*">SELECT
+    ROUND(AVG(CARRIER_DELAY), 2) AS avg_carrier_delay,
+    ROUND(AVG(WEATHER_DELAY), 2) AS avg_weather_delay,
+    ROUND(AVG(NAS_DELAY), 2) AS avg_nas_delay,
+    ROUND(AVG(SECURITY_DELAY), 2) AS avg_security_delay,
+    ROUND(AVG(LATE_AIRCRAFT_DELAY), 2) AS avg_late_aircraft_delay
+FROM flights
+WHERE CANCELLED = 0 AND ARR_DELAY &gt; 15;</sql><sql name="RankedAirlines*">SELECT
+    OP_UNIQUE_CARRIER,
+    COUNT(*) AS total_flights,
+    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
+FROM flights
+WHERE CANCELLED = 0
+GROUP BY OP_UNIQUE_CARRIER
+ORDER BY on_time_rate_pct ASC;</sql><sql name="DelayTrend*">SELECT
+    MONTH,
+    COUNT(*) AS total_flights,
+    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
+FROM flights
+WHERE CANCELLED = 0
+GROUP BY MONTH
+ORDER BY MONTH ASC;</sql><sql name="SQL 5*">SELECT
+    ORIGIN,
+    COUNT(*) AS total_flights,
+    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
+FROM flights
+WHERE CANCELLED = 0
+GROUP BY ORIGIN
+HAVING COUNT(*) &gt; 10000
+ORDER BY on_time_rate_pct ASC
+LIMIT 20;</sql><current_tab id="4"/></tab_sql></sqlb_project>
