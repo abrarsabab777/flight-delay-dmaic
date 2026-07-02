@@ -37,3 +37,10 @@
 * Baseline: 79.94% on-time | DPMO: 200,600 | Sigma: \~2.3
 * Day 5 complete — Measure phase SQL done
 
+## Jul 2
+
+* Exported 5 query results as CSVs to 03-Analyze folder
+* Built 5 Tableau charts: airline bar, delay causes Pareto, monthly trend line, US airport map, airline×month heatmap
+* Published to Tableau Public: https://public.tableau.com/app/profile/sabab.abrar.hamim/viz/USFlightDelayDMAICAnalysis2023
+* Day 6 complete — Analyze phase visualizations done
+
