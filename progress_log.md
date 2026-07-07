@@ -44,3 +44,10 @@
 * Published to Tableau Public: https://public.tableau.com/app/profile/sabab.abrar.hamim/viz/USFlightDelayDMAICAnalysis2023
 * Day 6 complete — Analyze phase visualizations done
 
+## Jul 7
+
+* Built Fishbone diagram (6 cause categories) in PowerPoint
+* Wrote 5-Why analysis (2 root causes: late aircraft + carrier delay)
+* Excel stats: Correlation, Regression (R²=0.9999), t-test (p=0.002), Cpk=0.044
+* Day 7 complete — Analyze phase fully done
+
