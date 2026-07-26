@@ -51,3 +51,11 @@
 * Excel stats: Correlation, Regression (R²=0.9999), t-test (p=0.002), Cpk=0.044
 * Day 7 complete — Analyze phase fully done
 
+## Jul 26
+
+* Built FMEA table in Excel (5 failure modes, RPN scores, recommended actions)
+* Top RPN: Late Aircraft cascade (405) → projected 243 after improvements
+* Built Improve Summary: current 2.3σ → projected 2.7σ, DPMO 200,600 → 130,000
+* RPN reduction: 40.7% (1,269 → 753)
+* Day 8 complete — Improve phase done
+

@@ -1,53 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="flight_delays.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2165"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="flights" custom_title="0" dock_id="1" table="4,7:mainflights"/><dock_state state="000000ff00000000fd00000001000000020000043c00000314fc0100000001fb000000160064006f0063006b00420072006f007700730065003101000000000000043c0000015c00ffffff0000043c0000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="flights" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="44"/><column index="2" value="135"/><column index="3" value="52"/><column index="4" value="241"/><column index="5" value="37"/><column index="6" value="241"/><column index="7" value="74"/><column index="8" value="75"/><column index="9" value="74"/><column index="10" value="103"/><column index="11" value="107"/><column index="12" value="75"/><column index="13" value="108"/><column index="14" value="143"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="OnTimeFlights%">SELECT 
-    COUNT(*) AS total_flights,
-    SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) AS on_time_flights,
-    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
-FROM flights
-WHERE CANCELLED = 0;</sql><sql name="MaxDelayReason">SELECT
-    ROUND(AVG(CARRIER_DELAY), 2) AS avg_carrier_delay,
-    ROUND(AVG(WEATHER_DELAY), 2) AS avg_weather_delay,
-    ROUND(AVG(NAS_DELAY), 2) AS avg_nas_delay,
-    ROUND(AVG(SECURITY_DELAY), 2) AS avg_security_delay,
-    ROUND(AVG(LATE_AIRCRAFT_DELAY), 2) AS avg_late_aircraft_delay
-FROM flights
-WHERE CANCELLED = 0 AND ARR_DELAY &gt; 15;</sql><sql name="RankedAirlines">SELECT
-    OP_UNIQUE_CARRIER,
-    COUNT(*) AS total_flights,
-    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
-FROM flights
-WHERE CANCELLED = 0
-GROUP BY OP_UNIQUE_CARRIER
-ORDER BY on_time_rate_pct ASC;</sql><sql name="DelayTrend">SELECT
-    MONTH,
-    COUNT(*) AS total_flights,
-    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
-FROM flights
-WHERE CANCELLED = 0
-GROUP BY MONTH
-ORDER BY MONTH ASC;</sql><sql name="RankedAirports">SELECT
-    ORIGIN,
-    COUNT(*) AS total_flights,
-    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
-FROM flights
-WHERE CANCELLED = 0
-GROUP BY ORIGIN
-HAVING COUNT(*) &gt; 10000
-ORDER BY on_time_rate_pct ASC
-LIMIT 20;</sql><sql name="DelayCauses*">SELECT 'Late Aircraft' AS delay_type, ROUND(AVG(LATE_AIRCRAFT_DELAY), 2) AS avg_minutes FROM flights WHERE CANCELLED=0 AND ARR_DELAY &gt; 15
-UNION ALL
-SELECT 'Carrier', ROUND(AVG(CARRIER_DELAY), 2) FROM flights WHERE CANCELLED=0 AND ARR_DELAY &gt; 15
-UNION ALL
-SELECT 'NAS (Air Traffic)', ROUND(AVG(NAS_DELAY), 2) FROM flights WHERE CANCELLED=0 AND ARR_DELAY &gt; 15
-UNION ALL
-SELECT 'Weather', ROUND(AVG(WEATHER_DELAY), 2) FROM flights WHERE CANCELLED=0 AND ARR_DELAY &gt; 15
-UNION ALL
-SELECT 'Security', ROUND(AVG(SECURITY_DELAY), 2) FROM flights WHERE CANCELLED=0 AND ARR_DELAY &gt; 15
-ORDER BY avg_minutes DESC;</sql><sql name="heatmap_month_airline*">SELECT 
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="flight_delays.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2165"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="flights" custom_title="0" dock_id="1" table="4,7:mainflights"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011300ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SampleData">SELECT 
     MONTH,
     OP_UNIQUE_CARRIER,
-    ROUND(100.0 * SUM(CASE WHEN ARR_DELAY &lt;= 15 THEN 1 ELSE 0 END) / COUNT(*), 2) AS on_time_rate_pct
+    ARR_DELAY,
+    CARRIER_DELAY,
+    WEATHER_DELAY,
+    NAS_DELAY,
+    LATE_AIRCRAFT_DELAY
 FROM flights
-WHERE CANCELLED = 0
-GROUP BY MONTH, OP_UNIQUE_CARRIER
-HAVING COUNT(*) &gt; 1000
-ORDER BY MONTH, OP_UNIQUE_CARRIER;</sql><current_tab id="6"/></tab_sql></sqlb_project>
+WHERE CANCELLED = 0 
+AND ARR_DELAY IS NOT NULL
+ORDER BY RANDOM()
+LIMIT 5000;1</sql><current_tab id="0"/></tab_sql></sqlb_project>
