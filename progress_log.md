@@ -59,3 +59,12 @@
 * RPN reduction: 40.7% (1,269 → 753)
 * Day 8 complete — Improve phase done
 
+## Jul 27
+
+* Built Power BI dashboard: 4 KPI cards, airline bar chart, monthly trend line, SPC control chart
+* Wrote 9 DAX measures including CALCULATE+ALL() for UCL/LCL control limits
+* Added Month + Airline slicers (interactive filtering)
+* Published to Power BI Service: https://app.powerbi.com/groups/me/reports/9047430d-f4c9-4925-894b-dfa90930c9f0
+* Built Control Plan document (CTQ, measurement system, reaction plan, sustainability note)
+* Day 9 complete — Control phase done
+
