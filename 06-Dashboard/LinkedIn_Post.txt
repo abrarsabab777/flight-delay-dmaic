@@ -1,0 +1,20 @@
+🚀 Just completed a full DMAIC project analyzing 6.8 million US domestic flights!
+
+As part of my Lean Six Sigma Green Belt portfolio, I built an end-to-end data analysis project using real 2023 BTS flight data.
+
+📊 Key findings:
+• US airlines ran at 79.94% on-time rate in 2023 — a 2.3 sigma process
+• Late aircraft cascade is the #1 delay driver (avg 28.47 min)
+• JetBlue had the worst on-time rate (69.2%), Republic Airways the best (87.2%)
+• July was the worst month — Florida airports dominated the bottom 20
+
+🛠️ Tools used:
+SQL · Tableau · Power BI + DAX · Excel (t-test, regression, Cpk) · GitHub
+
+📈 Projected outcome: Implementing buffer scheduling + predictive maintenance could improve on-time rate from 79.94% → 87%, reducing DPMO by 40.7%
+
+🔗 Full project: github.com/abrarsabab777/flight-delay-dmaic
+📊 Tableau: https://public.tableau.com/app/profile/sabab.abrar.hamim/viz/USFlightDelayDMAICAnalysis2023
+📱 Power BI Dashboard: https://app.powerbi.com/groups/me/reports/9047430d-f4c9-4925-894b-dfa90930c9f0/c3ba33ed7cd3d3e30cd4?experience=power-bi
+
+#LeanSixSigma #DataAnalysis #SQL #Tableau #PowerBI #Aviation #DMAIC #IMSE #UTA

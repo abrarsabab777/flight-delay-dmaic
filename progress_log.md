@@ -68,3 +68,11 @@
 * Built Control Plan document (CTQ, measurement system, reaction plan, sustainability note)
 * Day 9 complete — Control phase done
 
+## Aug 04
+
+* Built Notion portfolio — all 5 DMAIC phases complete (Define through Control)
+* Embedded Tableau and Power BI links in Notion
+* Added resume bullets and LinkedIn draft
+* Updated resume with 2 project bullet points
+* Day 10 + Day 11 complete — portfolio fully built
+
